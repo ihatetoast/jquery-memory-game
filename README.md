@@ -7,4 +7,6 @@ Why: I have not played with jQuery or Bootstrap in a while, so I wanted to dust 
 
 jQuery
 Bootstrap
-own images with Sketch
+Gulp
+SCSS
+Sketch

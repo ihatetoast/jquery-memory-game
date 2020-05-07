@@ -1,0 +1,35 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+
+@import "variables";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: $color-white;
+    background: $color-black;
+    font-family: $font-family-montserrat;
+}
+
+#game{
+    border: 1px solid blue;
+}
+#stats-container{
+    border: 2px solid yellow;
+}
+.img-card{    
+   border: 2px solid $color-lime;
+   border-radius: 5px;
+   background: white;
+    img{
+        width: 100%;
+    }
+}
