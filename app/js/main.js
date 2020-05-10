@@ -42,7 +42,7 @@ $(document).ready(function(){
   // double up the array so there are two of each card. shuffle again.
   const gameArr = [...subArr, ...subArr].sort(()=>0.5 - Math.random());
   $(gameArr).each(function(i, e){
-    $("#images").append(`<div class="img-card col-sm-2"><img src='./${e}' alt='shape' /></div>`)
+    $("#images").append(`<div class="img-card col-3  col-md-2"><img src='./${e}' alt='shape' /></div>`)
   })
   $("#reset").on('click', function(){
     ResetGame();

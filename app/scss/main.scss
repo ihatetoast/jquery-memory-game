@@ -1,7 +1,6 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
-
 
 @import "variables";
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 html, body {
     margin: 0;
@@ -19,11 +18,17 @@ body {
     font-family: $font-family-montserrat;
 }
 
-#game{
-    border: 1px solid blue;
-}
+
 #stats-container{
-    border: 2px solid yellow;
+    border: 1px solid yellow;
+    padding: 1em;
+}
+.boop-transparent{
+   background-color: $color-purple;
+}
+#reset{
+    background: $color-button;
+    border-radius: 3px;
 }
 .img-card{    
    border: 2px solid $color-lime;

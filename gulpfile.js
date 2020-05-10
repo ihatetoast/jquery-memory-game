@@ -7,7 +7,7 @@ function style() {
 
   return gulp.src('app/scss/**/*.scss')
   .pipe(sass().on('error',sass.logError))
-  .pipe(gulp.dest('src/css'))
+  .pipe(gulp.dest('app/css'))
   .pipe(browserSync.stream());
 }
 
