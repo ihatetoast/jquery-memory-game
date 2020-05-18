@@ -7147,7 +7147,8 @@ a.text-dark:hover, a.text-dark:focus {
 html, body {
   margin: 0;
   padding: 0;
-  border: 0; }
+  border: 0;
+  box-sizing: border-box; }
 
 html {
   height: 100%; }
@@ -7161,16 +7162,46 @@ body {
   border: 1px solid yellow;
   padding: 1em; }
 
-.boop-transparent {
-  background-color: #6F2DBD; }
+.header {
+  background-color: #6F2DBD;
+  margin-bottom: 10px; }
+  .header h1 {
+    margin-bottom: 0; }
+  @media (min-width: 768px) {
+    .header {
+      padding: 2rem 1rem;
+      margin-bottom: 1rem; } }
 
 #reset {
   background: #FF5500;
   border-radius: 3px; }
 
+.images-cont {
+  width: 270px;
+  margin: 0 auto; }
+  @media (min-width: 768px) {
+    .images-cont {
+      width: 720px; } }
+  @media (min-width: 1024px) {
+    .images-cont {
+      width: 900px; } }
+
 .img-card {
   border: 2px solid #8AC926;
   border-radius: 5px;
-  background: white; }
+  background: white;
+  display: inline-block;
+  margin: 5px;
+  width: 55px;
+  height: 55px; }
+  @media (min-width: 768px) {
+    .img-card {
+      margin: 4px;
+      width: 110px;
+      height: 110px; } }
+  @media (min-width: 1024px) {
+    .img-card {
+      width: 140px;
+      height: 140px; } }
   .img-card img {
-    width: 100%; }
+    display: none; }
