@@ -7204,4 +7204,5 @@ body {
       width: 140px;
       height: 140px; } }
   .img-card img {
-    display: none; }
+    display: none;
+    margin: 0; }
