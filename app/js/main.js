@@ -31,62 +31,109 @@ const imageArray = [
 // jquery code
 let imgName1 = "";
 let divId = "";
-let currentImg="";
-
+let moves = 0;
+let pairsMatched = 0;
+let message = '';
+let subArr = [];
 $(document).ready(function(){
 
  
  function shuffleImages(){
-  console.log("shuffleImages is fired");
+  $("#images div").detach();
  // duplicate imageArray
   const workingImgArr = [...imageArray]
   // shuffle and then take 12 (or whatever)
-  const subArr = workingImgArr.sort(()=>0.5 - Math.random()).slice(0,12);
+  subArr = workingImgArr.sort(()=>0.5 - Math.random()).slice(0,2);
   // double up the array so there are two of each card. shuffle again.
   const gameArr = [...subArr, ...subArr].sort(()=>0.5 - Math.random());
+  console.log(subArr.length);
   $(gameArr).each(function(i, e){
       $("#images").append(`<div id=${i}-${e} class="img-card" ><img src='./images/${e}.jpg' alt='shape' class="card-img"/></div>`)
       
     })
+    $("#images div").click(showCard);
  }
  
-// CHECK IF THE CARDS MATCH. 
+// SHOW CARDS & CHECK IF THE CARDS MATCH. 
 // IF THEY DO, KEEP THEM SHOWING. IF THEY DO NOT, HIDE
-
 function showCard(){
- 
-  const id=$(this).attr("id");
+  let id=$(this).attr("id");
   if($(`#${id} img`).is(":hidden")){
     $(`#${id} img`).css("display", "block");
 
     if(!imgName1){
       divId = id;
       imgName1 = $(`#${id} img`).attr('src');
+      console.log("imgName1 is", imgName1);
     } else{
-      currentImg = $(`#${id} img`).attr('src');
-    }
-    console.log(`divId is ${divId}`);
-    console.log(`imgName1 is ${imgName1}`);
-    console.log(`currentImg is ${currentImg}`);
-    
+      let currentImg = $(`#${id} img`).attr('src');
+      console.log("currentImg is", currentImg);
+      if(imgName1 !== currentImg){
+        setTimeout(()=>{
+          $(`#${id} img`).css("display", "none");
+          $(`#${divId} img`).css("display", "none");
+        divId = "";
+        imgName1 = "";
+        message = ""
+        $("#message").text(message);
+        }, 600);
+        message = "not a match!"
+        $("#message").text(message);
+        $("#message").text(message);
+        setTimeout(()=>{
+          message = ""
+          $("#message").text(message);
+        }, 610);
+        moves++;
+      } else{
+        pairsMatched++;
+        divId = "";
+        imgName1 = "";
+        moves++;
+        if(pairsMatched === subArr.length){
+          message = `All pairs matched in ${moves} moves! Game over.`
+          $("#message").text(message);
+          
+        } else {
+          message = "A match!"
+          $("#message").text(message);
+          setTimeout(()=>{
+            message = ""
+            $("#message").text(message);
+          }, 610);
+        }
+      }
+     
+      $("#moves").text(moves);    
+
+    }  
+   
   }
+  console.log(`pairsMatched is ${pairsMatched}`);
 }
 
   // RESET GAME: RESHUFFLE AND HIDE CARDS
   function ResetGame(){
-    console.log("reset game fired");
-    // $(".card-img").css("display", "none");
-    $("#images").empty();
+   
+    imgName1 = "";
+    divId = "";
+    moves = 0;
+    pairsMatched = 0;
+    message = '';
+   
+    $("#moves").text(moves);
+    
     shuffleImages();
+    // $("#images div").click(showCard);
+   
+   
   }
 
   
   shuffleImages();
 
-  $("#reset").on('click', function(){
-    ResetGame();
-  });
-  $("#images div").click(showCard)
-
+  $("#reset").click(ResetGame);
+  // $("#images div").click(showCard);
+ 
   
 });
